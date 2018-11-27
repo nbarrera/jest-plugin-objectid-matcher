@@ -11,7 +11,7 @@
   "author": "Nicolas Barrera <nbarrera@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "NODE_ENV=dev eslint --ext .jsx --ext .js src/ test/",
+    "lint": "NODE_ENV=dev eslint --ext .jsx --ext .js src/",
     "test": "export NODE_ENV=test && export NODE_PATH=./ && jest --env=jsdom --watchAll",
     "test-ci": "export NODE_ENV=test && export NODE_PATH=./ && jest --env=jsdom --coverage --forceExit --testResultsProcessor=jest-junit",
     "build": "rm -rf dist && BABEL_ENV=build rollup -c",
