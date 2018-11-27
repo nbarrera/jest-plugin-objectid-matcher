@@ -4,7 +4,33 @@ A Jest custom matcher plugin to compare `String`s against MongoDB's `ObjectId`s.
 
 # Setup
 
-Add custom matcher available project-wide
+Install it with:
+
+```
+yarn add -D nbarrera/jest-plugin-objectid-matcher#v1.0.4
+```
+
+Add custom matcher available project-wide:
+
+In `package.json`:
+```
+  ...
+  "jest": {
+    ...
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setupFwk.js"
+  }
+  ...
+```
+
+Then in `test/setupFwk.js`:
+
+```
+import setupObjectIdMatcher from 'jest-plugin-objectid-matcher'
+
+setupObjectIdMatcher()
+```
+
+Or if you already have a `setupTestFrameworkScriptFile` for jest just add it there.
 
 # Use
 
