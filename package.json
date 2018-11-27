@@ -1,0 +1,79 @@
+{
+  "name": "jest-matcher-mongo-objectid",
+  "version": "1.0.0",
+  "description": "A custom jest matcher for comparing with Mongo's ObjectId values",
+  "main": "dist/index-cjs.js",
+  "module": "dist/index-es.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nbarrera/jest-matcher-mongo-objectid.git"
+  },
+  "author": "Nicolas Barrera <nbarrera@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "NODE_ENV=dev eslint --ext .jsx --ext .js src/ test/",
+    "test": "export NODE_ENV=test && export NODE_PATH=./ && jest --env=jsdom --watchAll",
+    "test-ci": "export NODE_ENV=test && export NODE_PATH=./ && jest --env=jsdom --coverage --forceExit --testResultsProcessor=jest-junit",
+    "build": "rm -rf dist && BABEL_ENV=build rollup -c",
+    "start": "rm -rf dist && BABEL_ENV=build rollup -c -w"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "babel-core": "^7.0.0-bridge",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.1",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "jest-junit": "^5.2.0",
+    "nodemon": "^1.17.3",
+    "rollup": "^0.67.3",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^3.4.0"
+  },
+  "dependencies": {
+    "jest": "^23.6.0",
+    "mongodb": "^3.1.10"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js}"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)(spec|test).js"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost:3000/",
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.js$"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn build && git add dist",
+      "pre-push": "yarn lint"
+    }
+  }
+}
