@@ -42,7 +42,7 @@ const coerceToObjectId = (value, name) => {
 const coerceReceived = value => coerceToObjectId(value, 'received')
 const coerceExpected = value => coerceToObjectId(value, 'expected')
 
-expect.extend({
+export default () => expect.extend({
   toMatchObjectId(received, expected) {
     try {
       const receivedObjectId = coerceReceived(received)

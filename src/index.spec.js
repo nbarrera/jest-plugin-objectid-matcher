@@ -1,9 +1,10 @@
 import mongodb from 'mongodb'
 
-// eslint-disable-next-line no-unused-vars
-import matcher from './index'
+import setupMatcher from './index'
 
 const { ObjectId } = mongodb
+
+setupMatcher()
 
 describe('toMatchObjectId', () => {
   const id1 = '5af3365a1883d5c5661fd84c'
